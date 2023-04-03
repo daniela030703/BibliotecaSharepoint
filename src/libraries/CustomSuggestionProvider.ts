@@ -1,8 +1,10 @@
 import { BaseSuggestionProvider, ISuggestion } from "@pnp/modern-search-extensibility";
 import { IPropertyPaneGroup, PropertyPaneTextField } from '@microsoft/sp-property-pane';
+import { sp } from "@pnp/sp/presets/all"; 
+
 
 const PARKER_ICON_URL = 'https://raw.githubusercontent.com/pnp/media/master/parker/pnp/300w/parker.png';
-const PNP_ICON_URL = 'https://raw.githubusercontent.com/pnp/media/master/pnp-logos-generics/png/teal/300w/pnp-samples-teal-300.png';
+//const PNP_ICON_URL = 'https://raw.githubusercontent.com/pnp/media/master/pnp-logos-generics/png/teal/300w/pnp-samples-teal-300.png';
 
 export interface ICustomSuggestionProviderProperties {
   myProperty: string;
@@ -46,8 +48,8 @@ export class CustomSuggestionProvider extends BaseSuggestionProvider<ICustomSugg
     }
   
     private _getSampleSuggestions = async (queryText: string): Promise<ISuggestion[]> => {
-        const sampleSuggestions = [
-          {
+        const sampleSuggestions: any[] = [];
+          /*{
             displayText: `PnP Powershell`,
             groupName: 'PnP',
             iconSrc: PNP_ICON_URL,
@@ -78,8 +80,36 @@ export class CustomSuggestionProvider extends BaseSuggestionProvider<ICustomSugg
             onSuggestionSelected: this._onSuggestionSelected,
             description: 'Sample Suggestion',
             hoverText: `Sample Suggestion for ${queryText}`
+          }*/
+        
+
+        
+
+        sp.setup({
+          sp: {
+            baseUrl: "https://v8b6x.sharepoint.com/sites/sitioGrupo"
           }
-        ];
+        });
+
+        const libraryName = "Documentos";
+        const searchText = queryText;
+        
+        sp.web.lists.getByTitle(libraryName).items.select("FileLeafRef").filter(`substringof('${searchText}',FileLeafRef)`).get().then((items) => {
+          items.forEach(
+            (doc) => {
+              sampleSuggestions.push(
+                {
+                  displayText: "jfhdsfhsfh",
+                  groupName: ' ',
+                  iconSrc: PARKER_ICON_URL,
+                  onSuggestionSelected: this._onSuggestionSelected,
+                  description: 'Sample Suggestion',
+                  hoverText: `Sample Suggestion for ${queryText}`
+                }
+              )
+            }
+          )
+        });
   
         return sampleSuggestions.filter(sg => sg.displayText.toLowerCase().match(`\\b${queryText.trim().toLowerCase()}`));
     }

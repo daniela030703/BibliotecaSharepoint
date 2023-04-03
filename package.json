@@ -22,6 +22,7 @@
     "@pnp/modern-search-extensibility": "^1.5.0",
     "@webcomponents/custom-elements": "1.4.0",
     "@webcomponents/webcomponentsjs": "2.4.2",
+    "@pnp/sp": "2.11.0",
     "gulp-cli": "^2.3.0",
     "handlebars": "4.7.6",
     "office-ui-fabric-react": "7.156.0",
