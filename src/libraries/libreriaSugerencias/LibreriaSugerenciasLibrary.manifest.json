@@ -1,0 +1,9 @@
+{
+  "id": "dec3ce70-e12a-4c2f-9e20-2e7fd8ca0397",
+  "alias": "LibreriaSugerenciasLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
