@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "engines": {
-    "node": ">=16.13.0 <17.0.0"
+    "node": ">=14.21.3 <16.20.1 "
   },
   "main": "lib/index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@microsoft/sp-client-preview": "^1.9.1",
     "@microsoft/sp-component-base": "1.15.2",
     "@microsoft/sp-core-library": "1.15.2",
     "@microsoft/sp-http": "1.15.2",
@@ -20,9 +21,9 @@
     "@microsoft/sp-property-pane": "1.15.2",
     "@microsoft/sp-webpart-base": "1.15.2",
     "@pnp/modern-search-extensibility": "^1.5.0",
+    "@pnp/sp": "2.11.0",
     "@webcomponents/custom-elements": "1.4.0",
     "@webcomponents/webcomponentsjs": "2.4.2",
-    "@pnp/sp": "2.11.0",
     "gulp-cli": "^2.3.0",
     "handlebars": "4.7.6",
     "office-ui-fabric-react": "7.156.0",
